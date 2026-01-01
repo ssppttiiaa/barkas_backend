@@ -4,6 +4,9 @@ import db from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import forgotPasswordRoutes from "./routes/forgotpassword.js";
 import userRoutes from "./routes/userRoutes.js";
+import sellerRoutes from "./routes/sellerRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
+import productsRoutes from "./routes/products.js";
 
 const app = express();
 
@@ -18,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
+app.use("/api/products", productsRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/auth", forgotPasswordRoutes);
 app.use("/api/user", userRoutes);
@@ -26,6 +30,12 @@ app.use("/api/user", userRoutes);
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
+
+// seller routes
+app.use ("/api/seller", sellerRoutes);
+
+// admin routes
+app.use ("/api/admin", adminRoutes);
 
 // import express from "express";
 // import cors from "cors";
