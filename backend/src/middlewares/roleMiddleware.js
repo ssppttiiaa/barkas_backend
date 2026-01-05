@@ -1,3 +1,5 @@
+import e from "express";
+
 export const roleMiddleware = (...allowedRoles) => {
   return (req, res, next) => {
     if (!req.user || !req.user.role) {
@@ -15,3 +17,5 @@ export const roleMiddleware = (...allowedRoles) => {
     next();
   };
 };
+
+export default roleMiddleware;
